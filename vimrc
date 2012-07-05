@@ -1,13 +1,17 @@
-" Sample .vimrc file by Martin Brochhaus
-" Presented at PyCon APAC 2012
+" vimrc of gtt116
+
+" close The toolbar when use gVim
+" close the scrollbar when use gVim
+
+set guioptions-=T
+set guioptions-=l
+set guioptions-=r
+set guioptions-=b
+
+" color scheme I like elflord
+colorscheme desert
 
 
-" ============================================
-" Note to myself:
-" DO NOT USE <C-z> FOR SAVING WHEN PRESENTING!
-" ============================================
-
-colorscheme elflord
 set cursorline
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -47,10 +51,9 @@ inoremap <C-n> :nohl<CR>
 
 
 " Quicksave command
-noremap <C-S> :update<CR>
-"" vnoremap <C-Z> <C-C>:update<CR>
-"" inoremap <C-Z> <C-O>:update<CR>
-
+noremap <C-Z> :update<CR>
+vnoremap <C-Z> <C-C>:update<CR>
+inoremap <C-Z> <C-O>:update<CR>
 
 " Quick quit command
 "" noremap <Leader>e :quit<CR>  " Quit current window
@@ -70,7 +73,7 @@ map <c-h> <c-w>h
 
 
 " easier moving between tabs
-map <leader>p <esc>:tabprevious<CR>
+map <leader>m <esc>:tabprevious<CR>
 map <leader>n <esc>:tabnext<CR>
 map <leader>t <esc>:tabnew<CR>
 map <leader>w <esc>:tabclose<CR>
