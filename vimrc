@@ -7,6 +7,7 @@
 " DO NOT USE <C-z> FOR SAVING WHEN PRESENTING!
 " ============================================
 
+colorscheme elflord
 set cursorline
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
