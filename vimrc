@@ -17,7 +17,7 @@ autocmd! bufwritepost .vimrc source %
 " paste. At the bottom you should see ``-- INSERT (paste) --``.
 
 "" set pastetoggle=<F2>
-set clipboard=unnamedplus
+set clipboard+=unnamed
 
 
 " Mouse and backspace
@@ -30,6 +30,12 @@ set bs=2     " make backspace behave like normal again
 " it is next to ``m`` and ``n`` which I use for navigating between tabs.
 let mapleader = ","
 
+
+" ==================
+" copy to clipboard 
+" ==================
+nnoremap yy yy"+yy
+vnoremap y ygv"+y
 
 " Bind nohl
 " Removes highlight of your last search
