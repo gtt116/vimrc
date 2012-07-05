@@ -42,6 +42,8 @@ let mapleader = ","
 nnoremap yy yy"+yy
 vnoremap y ygv"+y
 
+
+
 " Bind nohl
 " Removes highlight of your last search
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
@@ -111,7 +113,7 @@ syntax on
 
 " Showing line numbers and length
 set number  " show line numbers
-"" set tw=79   " width of document (used by gd)
+set tw=79   " width of document (used by gd)
 "" set nowrap  " don't automatically wrap on load
 "" set fo-=t   " don't automatically wrap text when typing
 "" set colorcolumn=80
