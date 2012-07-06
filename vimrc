@@ -75,8 +75,8 @@ map <c-h> <c-w>h
 
 
 " easier moving between tabs
-map <leader>m <esc>:tabprevious<CR>
-map <leader>n <esc>:tabnext<CR>
+map <leader>n <esc>:tabprevious<CR>
+map <leader>m <esc>:tabnext<CR>
 map <leader>t <esc>:tabnew<CR>
 map <leader>w <esc>:tabclose<CR>
 
@@ -226,6 +226,7 @@ let Tlist_File_Fold_Auto_Close = 0
 let Tlist_Sort_Type="order"
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Auto_Highlight_Tag = 1
+let Tlist_Show_One_File = 1
 
 map <F6> :TlistToggle<cr>
 vmap <F6> <esc>:TlistToggle<cr>
