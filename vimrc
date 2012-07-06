@@ -25,6 +25,13 @@ autocmd! bufwritepost .vimrc source %
 set clipboard+=unnamed
 
 
+" Keep search pattern at the center of sreen
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
 " Mouse and backspace
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
@@ -41,7 +48,6 @@ let mapleader = ","
 " ==================
 nnoremap yy yy"+yy
 vnoremap y ygv"+y
-
 
 
 " Bind nohl
@@ -221,12 +227,13 @@ map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 " Taglist
 " ================
 let Tlist_Enable_Fold_Column = 0
-let Tlist_Compact_Format = 1
+let Tlist_Compact_Format = 0
 let Tlist_File_Fold_Auto_Close = 0
 let Tlist_Sort_Type="order"
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Show_One_File = 1
+let Tlist_Exit_OnlyWindow = 1
 
 map <F6> :TlistToggle<cr>
 vmap <F6> <esc>:TlistToggle<cr>
