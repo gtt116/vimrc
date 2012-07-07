@@ -22,7 +22,21 @@ autocmd! bufwritepost .vimrc source %
 " paste. At the bottom you should see ``-- INSERT (paste) --``.
 
 "" set pastetoggle=<F2>
-set clipboard+=unnamed
+"set clipboard+=unnamed
+" ======================
+" paste from system clipboard
+" =====================
+set clipboard=unnamed
+vnoremap y "*y
+vnoremap Y "*Y
+nnoremap p "*p
+nnoremap P "*P
+
+" ==================
+" copy to clipboard 
+" ==================
+nnoremap yy yy"+yy
+vnoremap y ygv"+y
 
 
 " Keep search pattern at the center of sreen
@@ -42,12 +56,6 @@ set bs=2     " make backspace behave like normal again
 " it is next to ``m`` and ``n`` which I use for navigating between tabs.
 let mapleader = ","
 
-
-" ==================
-" copy to clipboard 
-" ==================
-nnoremap yy yy"+yy
-vnoremap y ygv"+y
 
 
 " Bind nohl
@@ -81,10 +89,20 @@ map <c-h> <c-w>h
 
 
 " easier moving between tabs
-map <leader>n <esc>:tabprevious<CR>
-map <leader>m <esc>:tabnext<CR>
-map <leader>t <esc>:tabnew<CR>
-map <leader>w <esc>:tabclose<CR>
+"map <leader>n <esc>:tabprevious<CR>
+"map <leader>m <esc>:tabnext<CR>
+"map <leader>t <esc>:tabnew<CR>
+"map <leader>w <esc>:tabclose<CR>
+
+" tab navigation like firefox
+nmap <C-S-tab> :tabprevious<CR>
+nmap <C-tab> :tabnext<CR>
+map <C-S-tab> :tabprevious<CR>
+map <C-tab> :tabnext<CR>
+imap <C-S-tab> <Esc>:tabprevious<CR>i
+imap <C-tab> <Esc>:tabnext<CR>i
+nmap <C-t> :tabnew<CR>
+imap <C-t> <Esc>:tabnew<CR>
 
 " map sort function to a key
 "" vnoremap <Leader>s :sort<CR>
@@ -229,7 +247,7 @@ map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 let Tlist_Enable_Fold_Column = 0
 let Tlist_Compact_Format = 0
 let Tlist_File_Fold_Auto_Close = 0
-let Tlist_Sort_Type="order"
+let Tlist_Sort_Type="name"
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Show_One_File = 1
