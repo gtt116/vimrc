@@ -1,16 +1,23 @@
 " vimrc of gtt116
 
+" ================
+" Init pathogen
+" ================
+call pathogen#infect()
+call pathogen#helptags()
+
+" ===============
+" Set init width, height
+" ===============
+set lines=63
+set columns=120
+
 " close The toolbar when use gVim
 " close the scrollbar when use gVim
-
 set guioptions-=T
 set guioptions-=l
 set guioptions-=r
 set guioptions-=b
-
-" color scheme I like elflord
-"colorscheme desert
-
 " ==============
 " solarized
 " ==============
@@ -25,11 +32,10 @@ let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
 
-set cursorline
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
-
+set cursorline
 
 " ======================
 " paste from system clipboard
@@ -55,11 +61,7 @@ set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
 
 
-" Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
 let mapleader = ","
-
 
 
 " Bind nohl
@@ -180,12 +182,7 @@ set nowritebackup
 "" set noswapfile
 
 
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-call pathogen#infect()
-call pathogen#helptags()
+
 
 
 " ============================================================================
@@ -245,6 +242,7 @@ imap <F6> <esc>:TagbarToggle<cr>
 let Tlist_Use_Right_Window = 1
 let NERDTreeQuitOnOpen = 0
 let NERDTreeIgnore=['.pyc$[[file]]','.gitignore$[[dir]]']
+let g:nerdtree_tabs_open_on_gui_startup = 1
 map <F5> :NERDTreeToggle<cr>
 vmap <F5> <esc>:NERDTreeToggle<cr>
 imap <F5> <esc>:NERDTreeToggle<cr>
