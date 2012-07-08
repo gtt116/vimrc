@@ -35,8 +35,8 @@ nnoremap P "*P
 " ==================
 " copy to clipboard 
 " ==================
-nnoremap yy yy"+yy
-vnoremap y ygv"+y
+"nnoremap yy yy"+yy
+"vnoremap y ygv"+y
 
 
 " Keep search pattern at the center of sreen
@@ -91,8 +91,8 @@ map <c-h> <c-w>h
 " easier moving between tabs
 "map <leader>n <esc>:tabprevious<CR>
 "map <leader>m <esc>:tabnext<CR>
-"map <leader>t <esc>:tabnew<CR>
-"map <leader>w <esc>:tabclose<CR>
+map <leader>t <esc>:tabnew<CR>
+map <leader>w <esc>:tabclose<CR>
 
 " tab navigation like firefox
 nmap <C-S-tab> :tabprevious<CR>
