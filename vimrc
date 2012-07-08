@@ -9,10 +9,24 @@ set guioptions-=r
 set guioptions-=b
 
 " color scheme I like elflord
-colorscheme desert
+"colorscheme desert
 
+" ==============
+" solarized
+" ==============
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
 
 set cursorline
+
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
