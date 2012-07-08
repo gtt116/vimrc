@@ -17,26 +17,16 @@ set cursorline
 autocmd! bufwritepost .vimrc source %
 
 
-" Better copy & paste
-" When you want to paste large blocks of code into vim, press F2 before you
-" paste. At the bottom you should see ``-- INSERT (paste) --``.
-
-"" set pastetoggle=<F2>
-"set clipboard+=unnamed
 " ======================
 " paste from system clipboard
 " =====================
 set clipboard=unnamed
 vnoremap y "*y
+"vnoremap y ygv"+y
 vnoremap Y "*Y
 nnoremap p "*p
 nnoremap P "*P
-
-" ==================
-" copy to clipboard 
-" ==================
-"nnoremap yy yy"+yy
-"vnoremap y ygv"+y
+nnoremap yy yy"+yy
 
 
 " Keep search pattern at the center of sreen
@@ -214,53 +204,32 @@ set wildignore+=*/coverage/*
 " git clone https://github.com/klen/python-mode
 map <Leader>g :call RopeGotoDefinition()<CR>
 let ropevim_enable_shortcuts = 1
-let g:pymode_rope_goto_def_newwin = "vnew"
+let g:pymode_doc = 0
+let g:pymode_run = 0
+let g:pymode_lint = 0
+let g:pymode_rope_goto_def_newwin = "new"
 let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
 let g:pymode_syntax = 1
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 let g:pymode_folding = 0
+let g:pymode_rope_vim_completion=1
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
-" Better navigating through omnicomplete option list
-" See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
-"" set completeopt=longest,menuone
-"" function! OmniPopup(action)
-""     if pumvisible()
-""         if a:action == 'j'
-""             return "\<C-N>"
-""         elseif a:action == 'k'
-""             return "\<C-P>"
-""         endif
-""     endif
-""     return a:action
-"" endfunction
 
-"" inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-"" inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
-
-" =================
-" Taglist
-" ================
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Compact_Format = 0
-let Tlist_File_Fold_Auto_Close = 0
-let Tlist_Sort_Type="name"
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Show_One_File = 1
-let Tlist_Exit_OnlyWindow = 1
-
-map <F6> :TlistToggle<cr>
-vmap <F6> <esc>:TlistToggle<cr>
-imap <F6> <esc>:TlistToggle<cr>
+" =============
+" tagbar
+" =============
+map <F6> :TagbarToggle<cr>
+vmap <F6> <esc>:TagbarToggle<cr>
+imap <F6> <esc>:TagbarToggle<cr>
 
 " =============
 " NerdTree
 " ============
 let Tlist_Use_Right_Window = 1
+let NERDTreeQuitOnOpen = 0
 let NERDTreeIgnore=['.pyc$[[file]]','.gitignore$[[dir]]']
 map <F5> :NERDTreeToggle<cr>
 vmap <F5> <esc>:NERDTreeToggle<cr>
