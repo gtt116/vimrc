@@ -1,5 +1,11 @@
 " vimrc of gtt116
 
+" Enable syntax highlighting
+" You need to reload this file for the change to apply
+filetype off
+filetype plugin indent on
+syntax on
+
 " ================
 " Init pathogen
 " ================
@@ -10,7 +16,7 @@ call pathogen#helptags()
 " Set init width, height
 " ===============
 set lines=63
-set columns=120
+set columns=180
 
 " close The toolbar when use gVim
 " close the scrollbar when use gVim
@@ -18,20 +24,20 @@ set guioptions-=T
 set guioptions-=l
 set guioptions-=r
 set guioptions-=b
+
 " ==============
 " solarized
 " ==============
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
+colorscheme solarized
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
-colorscheme solarized
-
+if has('gui_running')
+    color solarized
+else
+    color default
+endif
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -134,11 +140,7 @@ vnoremap > >gv  " better indentation
 "" color wombat256mod
 
 
-" Enable syntax highlighting
-" You need to reload this file for the change to apply
-filetype off
-filetype plugin indent on
-syntax on
+
 
 
 " Showing line numbers and length
