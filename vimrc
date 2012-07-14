@@ -1,9 +1,6 @@
 " vimrc of gtt116
 
 " Enable syntax highlighting
-" You need to reload this file for the change to apply
-filetype off
-filetype plugin indent on
 syntax on
 
 " ================
@@ -11,48 +8,44 @@ syntax on
 " ================
 call pathogen#infect()
 call pathogen#helptags()
+filetype off
+filetype plugin indent on
 
-" ===============
-" Set init width, height
-" ===============
-set lines=63
-set columns=180
 
 " close The toolbar when use gVim
 " close the scrollbar when use gVim
-set guioptions-=T
-set guioptions-=l
-set guioptions-=r
-set guioptions-=b
-
-" ==============
-" solarized
-" ==============
-colorscheme solarized
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
 if has('gui_running')
-    color solarized
+	set lines=63
+	set columns=180
+	set guioptions-=T
+	set guioptions-=l
+	set guioptions-=r
+	set guioptions-=b
+	color solarized
+	let g:solarized_termtrans=1
+	let g:solarized_termcolors=256
+	let g:solarized_contrast="high"
+	let g:solarized_visibility="high"
+
+	" ======================
+	" paste from system clipboard
+	" =====================
+	set clipboard=unnamed
+	vnoremap y "*y
+	"vnoremap y ygv"+y
+	vnoremap Y "*Y
+	nnoremap p "*p
+	nnoremap P "*P
+	nnoremap yy yy"+yy
 else
-    color default
+	color desert
 endif
+
+
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 set cursorline
-
-" ======================
-" paste from system clipboard
-" =====================
-set clipboard=unnamed
-vnoremap y "*y
-"vnoremap y ygv"+y
-vnoremap Y "*Y
-nnoremap p "*p
-nnoremap P "*P
-nnoremap yy yy"+yy
 
 
 " Keep search pattern at the center of sreen
@@ -97,7 +90,6 @@ map <tab><tab> <C-w>w
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
-map <c-h> <c-w>h
 
 
 " easier moving between tabs
