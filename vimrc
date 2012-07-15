@@ -35,6 +35,7 @@ let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 if has('gui_running')
     color solarized
+    set background=dark
 else
     color default
 endif
@@ -56,11 +57,11 @@ nnoremap yy yy"+yy
 
 
 " Keep search pattern at the center of sreen
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
+"nnoremap <silent> n nzz
+"nnoremap <silent> N Nzz
+"nnoremap <silent> * *zz
+"nnoremap <silent> # #zz
+"nnoremap <silent> g* g*zz
 
 " Mouse and backspace
 set mouse=a  " on OSX press ALT and click
