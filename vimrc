@@ -15,7 +15,6 @@ filetype plugin indent on
 " close The toolbar when use gVim
 " close the scrollbar when use gVim
 if has('gui_running')
-    color solarized
     set background=light
 	set lines=63
 	set columns=180
@@ -23,11 +22,6 @@ if has('gui_running')
 	set guioptions-=l
 	set guioptions-=r
 	set guioptions-=b
-	color solarized
-	let g:solarized_termtrans=1
-	let g:solarized_termcolors=256
-	let g:solarized_contrast="high"
-	let g:solarized_visibility="high"
 
 	" ======================
 	" paste from system clipboard
@@ -39,10 +33,9 @@ if has('gui_running')
 	nnoremap p "*p
 	nnoremap P "*P
 	nnoremap yy yy"+yy
-else
-	color desert
 endif
 
+color desert
 
 
 " Automatic reloading of .vimrc
