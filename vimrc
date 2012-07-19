@@ -3,6 +3,8 @@
 " Enable syntax highlighting
 syntax on
 
+let mapleader = ","
+
 " ================
 " Init pathogen
 " ================
@@ -15,7 +17,6 @@ filetype plugin indent on
 " close The toolbar when use gVim
 " close the scrollbar when use gVim
 if has('gui_running')
-    set background=light
 	set lines=63
 	set columns=180
 	set guioptions-=T
@@ -55,10 +56,6 @@ set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
 
 
-let mapleader = ","
-
-
-" Bind nohl
 " Removes highlight of your last search
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 noremap <C-n> :nohl<CR>
@@ -198,7 +195,7 @@ let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
-
+let g:ctrlp_working_path_mode = 2
 
 " Settings for python-mode
 " cd ~/.vim/bundle
@@ -225,7 +222,7 @@ map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 map <F6> :TagbarToggle<cr>
 vmap <F6> <esc>:TagbarToggle<cr>
 imap <F6> <esc>:TagbarToggle<cr>
-
+let g:tagbar_sort = 0
 " =============
 " NerdTree
 " ============
