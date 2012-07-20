@@ -34,9 +34,11 @@ if has('gui_running')
 	nnoremap p "*p
 	nnoremap P "*P
 	nnoremap yy yy"+yy
+    color mustang 
+else
+    color desert
 endif
 
-color desert
 
 
 " Automatic reloading of .vimrc
