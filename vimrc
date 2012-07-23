@@ -13,7 +13,6 @@ call pathogen#helptags()
 filetype off
 filetype plugin indent on
 
-
 " close The toolbar when use gVim
 " close the scrollbar when use gVim
 if has('gui_running')
@@ -24,6 +23,8 @@ if has('gui_running')
 	set guioptions-=r
 	set guioptions-=b
 
+    " Let tablebel show only name of file, not the full path.
+    set guitablabel=%t
 	" ======================
 	" paste from system clipboard
 	" =====================
