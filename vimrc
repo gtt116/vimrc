@@ -67,9 +67,9 @@ inoremap <C-n> :nohl<CR>
 
 
 " Quicksave command
-noremap <C-Z> :update<CR>
-vnoremap <C-Z> <C-C>:update<CR>
-inoremap <C-Z> <C-O>:update<CR>
+noremap <C-s> :update<CR>
+vnoremap <C-s> <C-C>:update<CR>
+inoremap <C-s> <C-O>:update<CR>
 
 " Quick quit command
 "" noremap <Leader>e :quit<CR>  " Quit current window
