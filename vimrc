@@ -35,7 +35,8 @@ if has('gui_running')
 	nnoremap p "*p
 	nnoremap P "*P
 	nnoremap yy yy"+yy
-    color mustang 
+    color solarized 
+    set background=light
 else
     color desert
 endif
@@ -208,14 +209,19 @@ let ropevim_enable_shortcuts = 1
 let g:pymode_doc = 0
 let g:pymode_run = 0
 let g:pymode_lint = 0
-let g:pymode_rope_goto_def_newwin = "new"
-let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
 let g:pymode_syntax = 1
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 let g:pymode_folding = 0
+let g:pymode_rope_goto_def_newwin = "new"
+let g:pymode_rope_extended_complete = 1
 let g:pymode_rope_vim_completion=1
+let g:pymode_rope_enable_autoimport = 0
+let g:pymode_options_indent = 1
+let g:pymode_rope_guess_project = 0
+" Close rope, because I don't know if is it to slow down my Vim.!!!
+let g:pymode_rope = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 
