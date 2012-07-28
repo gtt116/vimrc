@@ -4,7 +4,7 @@
 syntax on
 
 let mapleader = ","
-
+set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
 " ================
 " Init pathogen
 " ================
@@ -22,6 +22,7 @@ if has('gui_running')
 	set guioptions-=l
 	set guioptions-=r
 	set guioptions-=b
+	set guioptions-=m
 
     " Let tablebel show only name of file, not the full path.
     set guitablabel=%t
@@ -170,7 +171,7 @@ set smartcase
 " for file system watchers
 set nobackup
 set nowritebackup
-"" set noswapfile
+set noswapfile
 
 
 
