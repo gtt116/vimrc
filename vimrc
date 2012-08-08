@@ -36,7 +36,9 @@ if has('gui_running')
 	nnoremap p "*p
 	nnoremap P "*P
 	nnoremap yy yy"+yy
-    color mustang
+"    color mustang
+    color solarized 
+    set background=light
 else
     color desert
 endif
@@ -242,3 +244,12 @@ let g:nerdtree_tabs_open_on_gui_startup = 1
 map <F5> :NERDTreeToggle<cr>
 vmap <F5> <esc>:NERDTreeToggle<cr>
 imap <F5> <esc>:NERDTreeToggle<cr>
+
+
+
+" ===============
+" indent guide
+" ===============
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
