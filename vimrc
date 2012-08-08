@@ -22,7 +22,7 @@ if has('gui_running')
 	set guioptions-=l
 	set guioptions-=r
 	set guioptions-=b
-	set guioptions-=m
+"	set guioptions-=m
 
     " Let tablebel show only name of file, not the full path.
     set guitablabel=%t
@@ -36,8 +36,7 @@ if has('gui_running')
 	nnoremap p "*p
 	nnoremap P "*P
 	nnoremap yy yy"+yy
-    color solarized 
-    set background=light
+    color mustang
 else
     color desert
 endif

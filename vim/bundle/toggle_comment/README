@@ -1,0 +1,28 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3912
+
+A small plugin to comment, un-comment or toggle one or more lines in both normal and visual mode.
+
+** Usage **
+In normal or visual mode:
+    q to toggle comment
+    shift-q to force comment
+    alt-q to force un-comment
+
+Also avaible in command mode:
+    Ct to toggle comment
+    Cc to force comment
+    Cu to force un-comment
+These 3 commands are compatible with range and global (:g)
+
+
+** Examples **
+'yyqp' : duplicate and comment an uncommented line
+'vjq' : when two lines are [1 commented/1 un-commented], switch the state of each line 
+':g!/toto/Cc' : comment all lines which not contain 'toto'
+
+
+** Remarks **
+- The plugin will check the option "&filetype" and the variable "b:current_syntax" to know how to comment the file.
+- "echo &filetype" or "echo b:current_syntax" will give you the name of the syntax of the opened file.
+- Add a new syntax to the script (or change the default behavior) is very very simple (add only one line), so don't hesitate to adapt the script.
+-  For languages like fortran where the rest of the line should not be disturbed by the comment symbol, don't forget to add a line to "s:comment_in_place".
