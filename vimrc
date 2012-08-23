@@ -229,7 +229,7 @@ let g:ctrlp_working_path_mode = 2
 "let g:pymode_rope_guess_project = 0
 " Close rope, because I don't know if is it to slow down my Vim.!!!
 "let g:pymode_rope = 0
-"map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 
 " =============
