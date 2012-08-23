@@ -40,7 +40,12 @@ if has('gui_running')
 "    color solarized 
 "    set background=light
 else
-    color default
+    set background=light
+    set t_Co=256
+    let g:solarized_termcolors = 256
+    let g:solarized_visibility = "high"
+    let g:solarized_contrast = "high"
+    colorscheme solarized
 endif
 
 
