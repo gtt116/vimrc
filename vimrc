@@ -2,7 +2,7 @@
 
 " Enable syntax highlighting
 syntax on
-
+set encoding=utf-8
 let mapleader = ","
 set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 " ================
@@ -40,7 +40,7 @@ if has('gui_running')
 "    color solarized 
 "    set background=light
 else
-    color desert
+    color default
 endif
 
 
