@@ -4,7 +4,7 @@
 syntax on
 
 let mapleader = ","
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+set guifont=DejaVu\ Sans\ Mono\ 10
 " ================
 " Init pathogen
 " ================
@@ -36,13 +36,12 @@ if has('gui_running')
 	nnoremap p "+p
 	nnoremap P "+P
 	nnoremap yy yy"+yy
-    color mustang
-"    color solarized 
-"    set background=light
+"    color mustang
+    color solarized 
+    set background=light
 else
     color desert
 endif
-
 
 
 " Automatic reloading of .vimrc
@@ -139,8 +138,8 @@ set number  " show line numbers
 set tw=79   " width of document (used by gd)
 "" set nowrap  " don't automatically wrap on load
 "" set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
+"set colorcolumn=80
+"highlight ColorColumn ctermbg=233
 
 
 " easier formatting of paragraphs
