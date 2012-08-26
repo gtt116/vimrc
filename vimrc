@@ -2,7 +2,7 @@
 
 " Enable syntax highlighting
 syntax on
-
+set encoding=utf-8
 let mapleader = ","
 set guifont=DejaVu\ Sans\ Mono\ 10
 " ================
@@ -40,7 +40,12 @@ if has('gui_running')
     color solarized 
     set background=light
 else
-    color desert
+    set background=light
+    set t_Co=256
+    let g:solarized_termcolors = 256
+    let g:solarized_visibility = "high"
+    let g:solarized_contrast = "high"
+    colorscheme solarized
 endif
 
 
@@ -140,6 +145,7 @@ set tw=79   " width of document (used by gd)
 "" set fo-=t   " don't automatically wrap text when typing
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=233
+set colorcolumn=80
 
 
 " easier formatting of paragraphs
@@ -205,24 +211,24 @@ let g:ctrlp_working_path_mode = 2
 " Settings for python-mode
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
-map <Leader>g :call RopeGotoDefinition()<CR>
-let ropevim_enable_shortcuts = 1
-let g:pymode_doc = 0
-let g:pymode_run = 0
-let g:pymode_lint = 0
-let g:pymode_breakpoint = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 0
-let g:pymode_folding = 0
-let g:pymode_rope_goto_def_newwin = "new"
-let g:pymode_rope_extended_complete = 1
-let g:pymode_rope_vim_completion=1
-let g:pymode_rope_enable_autoimport = 0
-let g:pymode_options_indent = 1
-let g:pymode_rope_guess_project = 0
+"map <Leader>g :call RopeGotoDefinition()<CR>
+"let ropevim_enable_shortcuts = 1
+"let g:pymode_doc = 0
+"let g:pymode_run = 0
+"let g:pymode_lint = 0
+"let g:pymode_breakpoint = 0
+"let g:pymode_syntax = 1
+"let g:pymode_syntax_builtin_objs = 0
+"let g:pymode_syntax_builtin_funcs = 0
+"let g:pymode_folding = 0
+"let g:pymode_rope_goto_def_newwin = "new"
+"let g:pymode_rope_extended_complete = 1
+"let g:pymode_rope_vim_completion=1
+"let g:pymode_rope_enable_autoimport = 0
+"let g:pymode_options_indent = 1
+"let g:pymode_rope_guess_project = 0
 " Close rope, because I don't know if is it to slow down my Vim.!!!
-let g:pymode_rope = 0
+"let g:pymode_rope = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 
@@ -233,6 +239,9 @@ map <F6> :TagbarToggle<cr>
 vmap <F6> <esc>:TagbarToggle<cr>
 imap <F6> <esc>:TagbarToggle<cr>
 let g:tagbar_sort = 0
+map <leader>tb :TagbarToggle<cr>
+vmap <leader>tb <esc>:TagbarToggle<cr>
+imap <leader>tb <esc>:TagbarToggle<cr>
 " =============
 " NerdTree
 " ============
@@ -245,6 +254,9 @@ vmap <F5> <esc>:NERDTreeToggle<cr>
 imap <F5> <esc>:NERDTreeToggle<cr>
 
 
+map <leader>nt :NERDTreeToggle<cr>
+vmap <leader>nt <esc>:NERDTreeToggle<cr>
+imap <leader>nt <esc>:NERDTreeToggle<cr>
 
 " ===============
 " indent guide
