@@ -42,6 +42,7 @@
 'pymode_utils_whitespaces'	pymode.txt	/*'pymode_utils_whitespaces'*
 'pymode_virtualenv'	pymode.txt	/*'pymode_virtualenv'*
 :PyLint	pymode.txt	/*:PyLint*
+:PyLintAuto	pymode.txt	/*:PyLintAuto*
 :PyLintToggle	pymode.txt	/*:PyLintToggle*
 :Pydoc	pymode.txt	/*:Pydoc*
 :Pyrun	pymode.txt	/*:Pyrun*
@@ -52,6 +53,7 @@
 :RopeLuckyAssist	ropevim.txt	/*:RopeLuckyAssist*
 :RopevimAutoImport	ropevim.txt	/*:RopevimAutoImport*
 PyLint	pymode.txt	/*PyLint*
+PyLintAuto	pymode.txt	/*PyLintAuto*
 PyLintToggle	pymode.txt	/*PyLintToggle*
 Pydoc	pymode.txt	/*Pydoc*
 Pyrun	pymode.txt	/*Pyrun*
@@ -62,6 +64,7 @@ PythonModeCredits	pymode.txt	/*PythonModeCredits*
 PythonModeFAQ	pymode.txt	/*PythonModeFAQ*
 PythonModeKeys	pymode.txt	/*PythonModeKeys*
 PythonModeLicense	pymode.txt	/*PythonModeLicense*
+PythonModeModeline	pymode.txt	/*PythonModeModeline*
 PythonModeOptions	pymode.txt	/*PythonModeOptions*
 PythonModeOptionsDetails	pymode.txt	/*PythonModeOptionsDetails*
 RopeCodeAssist	ropevim.txt	/*RopeCodeAssist*
