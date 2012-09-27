@@ -58,8 +58,8 @@ set cursorline
 "nnoremap <silent> g* g*zz
 
 " Mouse and backspace
-set mouse=a  " on OSX press ALT and click
-set bs=2     " make backspace behave like normal again
+"set mouse=a  " on OSX press ALT and click
+"set bs=2     " make backspace behave like normal again
 
 
 " Removes highlight of your last search
