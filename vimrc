@@ -211,7 +211,7 @@ map <Leader>g :call RopeGotoDefinition()<CR>
 "let ropevim_enable_shortcuts = 1
 let g:pymode_doc = 0
 let g:pymode_run = 0
-let g:pymode_lint = 0
+let g:pymode_lint = 1
 let g:pymode_breakpoint = 0
 let g:pymode_syntax = 1
 "let g:pymode_syntax_builtin_objs = 0
