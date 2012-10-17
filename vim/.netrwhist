@@ -1,10 +1,5 @@
 let g:netrw_dirhistmax  =10
-<<<<<<< HEAD
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/hzgaott/vimrc/vim/bundle/taglist.vim'
-let g:netrw_dirhist_2='/home/hzgaott/.vim'
-=======
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/hzgaott/vimrc/vim/bundle/taglist.vim'
 let g:netrw_dirhist_2='/home/hzgaott/vimrc/vim'
 let g:netrw_dirhist_3='/home/hzgaott/vimrc'
@@ -12,4 +7,4 @@ let g:netrw_dirhist_4='/home/hzgaott/vimrc/vim'
 let g:netrw_dirhist_5='/home/hzgaott/vimrc'
 let g:netrw_dirhist_6='/home/hzgaott/vimrc/vim'
 let g:netrw_dirhist_7='/home/hzgaott/vimrc'
->>>>>>> origin/master
+let g:netrw_dirhist_8='/usr/lib/python2.7/dist-packages/pip'

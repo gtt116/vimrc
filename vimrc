@@ -213,6 +213,7 @@ let g:pymode_doc = 0
 let g:pymode_run = 0
 let g:pymode_lint = 1
 let g:pymode_breakpoint = 0
+let g:pymode_lint_checker="pep8"
 let g:pymode_syntax = 1
 "let g:pymode_syntax_builtin_objs = 0
 "let g:pymode_syntax_builtin_funcs = 0
@@ -234,7 +235,7 @@ map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 map <F6> :TagbarToggle<cr>
 vmap <F6> <esc>:TagbarToggle<cr>
 imap <F6> <esc>:TagbarToggle<cr>
-let g:tagbar_sort = 1
+let g:tagbar_sort = 0
 map <leader>tb :TagbarToggle<cr>
 vmap <leader>tb <esc>:TagbarToggle<cr>
 imap <leader>tb <esc>:TagbarToggle<cr>
