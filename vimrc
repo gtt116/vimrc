@@ -248,3 +248,4 @@ let g:indent_guides_guide_size = 1
 " minibuffer
 " ==============
 let g:miniBufExplMapCTabSwitchBufs = 1
+map <Leader>b :MiniBufExplorer<cr>
