@@ -90,7 +90,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-
 " easier moving between tabs
 "map <leader>n <esc>:tabprevious<CR>
 "map <leader>m <esc>:tabnext<CR>
@@ -98,14 +97,14 @@ map <leader>t <esc>:tabnew<CR>
 map <leader>w <esc>:tabclose<CR>
 
 " tab navigation like firefox
-nmap <C-S-tab> :tabprevious<CR>
-nmap <C-tab> :tabnext<CR>
-map <C-S-tab> :tabprevious<CR>
-map <C-tab> :tabnext<CR>
-imap <C-S-tab> <Esc>:tabprevious<CR>i
-imap <C-tab> <Esc>:tabnext<CR>i
-nmap <C-t> :tabnew<CR>
-imap <C-t> <Esc>:tabnew<CR>
+"nmap <C-S-tab> :tabprevious<CR>
+"nmap <C-tab> :tabnext<CR>
+"map <C-S-tab> :tabprevious<CR>
+"map <C-tab> :tabnext<CR>
+"imap <C-S-tab> <Esc>:tabprevious<CR>i
+"imap <C-tab> <Esc>:tabnext<CR>i
+"nmap <C-t> :tabnew<CR>
+"imap <C-t> <Esc>:tabnew<CR>
 
 " map sort function to a key
 "" vnoremap <Leader>s :sort<CR>
@@ -116,23 +115,6 @@ imap <C-t> <Esc>:tabnew<CR>
 " then press ``>`` several times.
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
-
-
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-"" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-"" au InsertLeave * match ExtraWhitespace /\s\+$/
-
-
-" Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-"" set t_Co=256
-"" color wombat256mod
-
-
-
-
 
 " Showing line numbers and length
 set number  " show line numbers
@@ -261,3 +243,8 @@ imap <leader>nt <esc>:NERDTreeToggle<cr>
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 "let g:indent_guides_enable_on_vim_startup = 1
+
+" ===============
+" minibuffer
+" ==============
+let g:miniBufExplMapCTabSwitchBufs = 1
