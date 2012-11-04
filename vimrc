@@ -1,15 +1,15 @@
 " vimrc of gtt116
 
-" Enable syntax highlighting
 syntax on
-set encoding=utf-8
 let mapleader = ","
+set encoding=utf-8
 set guifont=DejaVu\ Sans\ Mono\ 10
 " ================
 " Init pathogen
 " ================
 call pathogen#infect()
 call pathogen#helptags()
+
 filetype off
 filetype plugin indent on
 
@@ -38,6 +38,9 @@ if has('gui_running')
 	nnoremap yy yy"+yy
 endif
 
+" ===============
+" solarized color
+" ===============
 set background=light
 set t_Co=256
 let g:solarized_termcolors = 256
@@ -48,7 +51,6 @@ colorscheme solarized
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 set cursorline
-
 
 " Keep search pattern at the center of sreen
 "nnoremap <silent> n nzz
@@ -61,13 +63,11 @@ set cursorline
 "set mouse=a  " on OSX press ALT and click
 "set bs=2     " make backspace behave like normal again
 
-
 " Removes highlight of your last search
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
-
 
 " Quicksave command
 noremap <C-s> :update<CR>
@@ -77,7 +77,6 @@ inoremap <C-s> <C-O>:update<CR>
 " Quick quit command
 "" noremap <Leader>e :quit<CR>  " Quit current window
 "" noremap <Leader>E :qa!<CR>   " Quit all windows
-
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -109,7 +108,6 @@ map <leader>w <esc>:tabclose<CR>
 " map sort function to a key
 "" vnoremap <Leader>s :sort<CR>
 
-
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
 " then press ``>`` several times.
@@ -126,15 +124,9 @@ set tw=79   " width of document (used by gd)
 set colorcolumn=80
 
 
-" easier formatting of paragraphs
-"" vmap Q gq
-"" nmap Q gqap
-
-
 " Useful settings
 set history=700
 set undolevels=700
-
 
 " Real programmers don't use TABs but spaces
 set tabstop=4
@@ -143,23 +135,17 @@ set shiftwidth=4
 set shiftround
 set expandtab
 
-
 " Make search case insensitive
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-
 " Disable stupid backup and swap files - they trigger too many events
 " for file system watchers
 set nobackup
 set nowritebackup
 set noswapfile
-
-
-
-
 
 " ============================================================================
 " Python IDE Setup
@@ -221,6 +207,7 @@ let g:tagbar_sort = 0
 map <leader>tb :TagbarToggle<cr>
 vmap <leader>tb <esc>:TagbarToggle<cr>
 imap <leader>tb <esc>:TagbarToggle<cr>
+
 " =============
 " NerdTree
 " ============
@@ -231,8 +218,6 @@ let g:nerdtree_tabs_open_on_gui_startup = 1
 map <F5> :NERDTreeToggle<cr>
 vmap <F5> <esc>:NERDTreeToggle<cr>
 imap <F5> <esc>:NERDTreeToggle<cr>
-
-
 map <leader>nt :NERDTreeToggle<cr>
 vmap <leader>nt <esc>:NERDTreeToggle<cr>
 imap <leader>nt <esc>:NERDTreeToggle<cr>
