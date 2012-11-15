@@ -179,20 +179,18 @@ map <Leader>g :call RopeGotoDefinition()<CR>
 "let ropevim_enable_shortcuts = 1
 let g:pymode_doc = 0
 let g:pymode_run = 0
-let g:pymode_lint = 1
 let g:pymode_breakpoint = 0
+let g:pymode_lint = 1
 let g:pymode_lint_checker="pep8"
+let g:pymode_lint_ignore="N4,E12,E711,E712,E721,E502"
 let g:pymode_syntax = 1
-"let g:pymode_syntax_builtin_objs = 0
-"let g:pymode_syntax_builtin_funcs = 0
 let g:pymode_folding = 0
 let g:pymode_rope_goto_def_newwin="new"
-"let g:pymode_rope_extended_complete = 1
-"let g:pymode_rope_vim_completion=1
-"let g:pymode_rope_enable_autoimport = 0
-"let g:pymode_options_indent = 1
+let g:pymode_rope_extended_complete = 1
+let g:pymode_rope_vim_completion=1
+let g:pymode_rope_enable_autoimport = 0
+let g:pymode_options_indent = 1
 let g:pymode_rope_guess_project = 1
-" Close rope, because I don't know if is it to slow down my Vim.!!!
 "let g:pymode_rope = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
