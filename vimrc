@@ -172,6 +172,9 @@ set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 let g:ctrlp_working_path_mode = 2
 
+" set default ctrlp to ctrlpMixed
+map <c-p> :CtrlPMixed<CR>
+
 " Settings for python-mode
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
