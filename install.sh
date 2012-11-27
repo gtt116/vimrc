@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo apt-get update
 sudo apt-get install exuberant-ctags vim-gnome -y
 
 if [[ -e ~/.vimrc ]]; then
