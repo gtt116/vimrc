@@ -52,12 +52,11 @@ colorscheme solarized
 autocmd! bufwritepost .vimrc source %
 set cursorline
 
-" Keep search pattern at the center of sreen
-"nnoremap <silent> n nzz
-"nnoremap <silent> N Nzz
-"nnoremap <silent> * *zz
-"nnoremap <silent> # #zz
-"nnoremap <silent> g* g*zz
+" Use left, right, up, down arrow to modify windows size.
+nmap <LEFT> <C-W><
+nmap <RIGHT> <C-W>>
+nmap <UP> <C-W>+
+nmap <DOWN> <C-W>-
 
 " Mouse and backspace
 "set mouse=a  " on OSX press ALT and click
