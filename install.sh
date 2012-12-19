@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install exuberant-ctags vim-gnome -y
+sudo apt-get install exuberant-ctags -y
 
 if [[ -e ~/.vimrc ]]; then
     echo 'Backup vimrc to ~/.vimrc.bak'
