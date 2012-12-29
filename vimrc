@@ -68,6 +68,9 @@ noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
+map <leader>n <esc>:cn<CR>
+map <leader>p <esc>:cp<CR>
+
 " Quicksave command
 noremap <C-s> :update<CR>
 vnoremap <C-s> <C-C>:update<CR>
