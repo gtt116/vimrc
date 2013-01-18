@@ -76,11 +76,9 @@ noremap <C-s> :update<CR>
 vnoremap <C-s> <C-C>:update<CR>
 inoremap <C-s> <C-O>:update<CR>
 
-map <C-w> :q<CR>
-
 " Quick quit command
-"" noremap <Leader>e :quit<CR>  " Quit current window
-"" noremap <Leader>E :qa!<CR>   " Quit all windows
+noremap <Leader>e :quit<CR>  " Quit current window
+noremap <Leader>E :qa!<CR>   " Quit all windows
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
