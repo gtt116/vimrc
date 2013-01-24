@@ -72,9 +72,9 @@ map <leader>n <esc>:cn<CR>
 map <leader>p <esc>:cp<CR>
 
 " Quicksave command
-noremap <C-s> :update<CR>
-vnoremap <C-s> <C-C>:update<CR>
-inoremap <C-s> <C-O>:update<CR>
+noremap <Leader>s :update<CR>
+vnoremap <Leader>s <C-C>:update<CR>
+inoremap <Leader>s <C-O>:update<CR>
 
 " Quick quit command
 noremap <Leader>e :quit<CR>  " Quit current window
