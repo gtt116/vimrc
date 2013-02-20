@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/hzgaott/vimrc/vim/bundle/taglist.vim'
 let g:netrw_dirhist_2='/home/hzgaott/vimrc/vim'
 let g:netrw_dirhist_3='/home/hzgaott/vimrc'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/home/hzgaott/vimrc'
 let g:netrw_dirhist_6='/home/hzgaott/vimrc/vim'
 let g:netrw_dirhist_7='/home/hzgaott/vimrc'
 let g:netrw_dirhist_8='/usr/lib/python2.7/dist-packages/pip'
+let g:netrw_dirhist_9='/home/hate/.config'
