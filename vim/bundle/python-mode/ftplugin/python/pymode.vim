@@ -15,22 +15,8 @@ endif
 
 " Options {{{
 
-" Python indent options
-if pymode#Option('options_indent')
-    setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class
-    setlocal cindent
-    setlocal tabstop=4
-    setlocal softtabstop=4
-    setlocal shiftwidth=4
-    setlocal shiftround
-    setlocal smartindent
-    setlocal smarttab
-    setlocal expandtab
-    setlocal autoindent
-endif
-
 " Python other options
-if pymode#Option('options_other')
+if pymode#Option('options')
     setlocal complete+=t
     setlocal formatoptions-=t
     if v:version > 702 && !&relativenumber
@@ -85,7 +71,7 @@ if pymode#Option('lint')
     endif
 
     " DESC: Run queue
-    setlocal updatetime=1000
+    let &l:updatetime = g:pymode_updatetime
     au CursorHold <buffer> call pymode#queue#Poll()
     au BufLeave <buffer> py queue.stop_queue()
 
@@ -147,7 +133,7 @@ endif
 " Utils {{{
 
 if pymode#Option('utils_whitespaces')
-    au BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+    au BufWritePre <buffer> call pymode#TrimWhiteSpace()
 endif
 
 " }}}
