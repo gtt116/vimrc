@@ -1,0 +1,1 @@
+/home/hzgaott/vimrc/vim
