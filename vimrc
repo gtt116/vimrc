@@ -180,23 +180,20 @@ map <c-p> :CtrlPMixed<CR>
 " Settings for python-mode
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
-map <Leader>g :call RopeGotoDefinition()<CR>
-"let g:pymode_doc = 1
+"map <Leader>g :call RopeGotoDefinition()<CR>
+"imap <leader>/ <c-o>:call RopeCodeAssist()<CR>
 let g:pymode_run = 0
-"let g:pymode_breakpoint = 1
-"let g:pymode_lint = 1
+let g:pymode_folding=0
 let g:pymode_lint_checker="pep8"
 let g:pymode_lint_ignore="N4,E12,E711,E712,E721,E502"
-"let g:pymode_syntax = 1
-"let g:pymode_options_indent = 1
-let g:pymode_folding=0
  
-let g:pymode_rope_vim_completion=1
-let g:pymode_rope_extended_complete=1
-let g:pymode_rope_enable_autoimport=0
-let g:pymode_rope_goto_def_newwin="new"
-let g:pymode_rope_guess_project = 1
-"let g:pymode_rope = 0
+let g:pymode_rope_enable_shortcuts=0
+let pymode_rope_vim_completion=0
+let pymode_rope_extended_complete=0
+"let g:pymode_rope_enable_autoimport=0
+"let g:pymode_rope_goto_def_newwin="new"
+"let g:pymode_rope_guess_project = 1
+let g:pymode_rope = 0
 
 
 " =============

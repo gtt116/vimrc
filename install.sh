@@ -2,6 +2,7 @@
 
 sudo apt-get update
 sudo apt-get install exuberant-ctags -y
+sudo pip install jedi
 
 if [[ -e ~/.vimrc ]]; then
     echo 'Backup vimrc to ~/.vimrc.bak'
