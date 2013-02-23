@@ -13,13 +13,11 @@ command! -range Cu <line1>,<line2>call ToggleComment_uncomment()
 let s:comment_symbol = {
   \  'fortran'	:  'C',
   \  'matlab'	:  '%',
+  \  'rien'    :  '~',
+  \  'python'	:  '#',
+  \  'vim'	:  '"',
+  \  'c'	:  '//',
   \ }
-"  \  'rien'    :  '~',
-"  \  'python'	:  '#',
-"  \  'fortran'	:  'C',
-"  \  'vim'	:  '"',
-"  \  'c'	:  '//',
-"  \ }
 
 " Indique les 'syntax' où la ligne doit rester inchangée 
 let s:comment_in_place = {
