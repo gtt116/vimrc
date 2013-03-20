@@ -58,9 +58,8 @@ nmap <RIGHT> <C-W>>
 nmap <UP> <C-W>+
 nmap <DOWN> <C-W>-
 
-" Mouse and backspace
-"set mouse=a  " on OSX press ALT and click
-"set bs=2     " make backspace behave like normal again
+" Remove unwanted spaces
+map <leader>c :%s/\s\+$//<CR>
 
 " Removes highlight of your last search
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
