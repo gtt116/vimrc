@@ -182,7 +182,7 @@ map <c-p> :CtrlPMixed<CR>
 map <Leader>g :call RopeGotoDefinition()<CR>
 let g:pymode_run = 0
 let g:pymode_folding=0
-let g:pymode_lint_checker="pep8"
+let g:pymode_lint_checker="pyflakes,pep8"
 let g:pymode_lint_ignore="N4,E12,E711,E712,E721,E502"
  
 let g:pymode_rope_enable_shortcuts=0
