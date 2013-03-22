@@ -49,7 +49,8 @@ let g:solarized_contrast = "high"
 colorscheme solarized
 
 " Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
+" autocmd! bufwritepost .vimrc source %
+"
 set cursorline
 
 " Use left, right, up, down arrow to modify windows size.
