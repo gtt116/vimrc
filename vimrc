@@ -46,8 +46,8 @@ set t_Co=256
 let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
-"colorscheme solarized
-colorscheme molokai
+colorscheme solarized
+"colorscheme molokai
 
 " Automatic reloading of .vimrc
 " autocmd! bufwritepost .vimrc source %
