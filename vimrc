@@ -4,14 +4,23 @@ syntax on
 let mapleader = ","
 set encoding=utf-8
 set guifont=DejaVu\ Sans\ Mono\ 10
+
 " ================
 " Init pathogen
 " ================
 call pathogen#infect()
 call pathogen#helptags()
 
-filetype off
+"FileType support
+set filetype=on
 filetype plugin indent on
+
+" indention for web languages
+autocmd FileType javascript,html,css,php set ai
+autocmd FileType javascript,html,css,php set sw=2
+autocmd FileType javascript,html,css,php set ts=2
+autocmd FileType javascript,html,css,php set sts=2
+autocmd FileType javascript,css,php set textwidth=79
 
 " close The toolbar when use gVim
 " close the scrollbar when use gVim
