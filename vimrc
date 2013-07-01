@@ -5,9 +5,11 @@ let mapleader = ","
 set encoding=utf-8
 set guifont=DejaVu\ Sans\ Mono\ 10
 
-" ================
+if has("mac") || has("macunix")
+    set guifont=Monaco:h12
+endif
+
 " Init pathogen
-" ================
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -22,16 +24,15 @@ autocmd FileType javascript,html,css,php set ts=2
 autocmd FileType javascript,html,css,php set sts=2
 autocmd FileType javascript,css,php set textwidth=79
 
+if has('gui_running')
 " close The toolbar when use gVim
 " close the scrollbar when use gVim
-if has('gui_running')
 	set lines=63
 	set columns=180
 	set guioptions-=T
 	set guioptions-=l
 	set guioptions-=r
 	set guioptions-=b
-"	set guioptions-=m
 
     " Let tablebel show only name of file, not the full path.
     set guitablabel=%t
