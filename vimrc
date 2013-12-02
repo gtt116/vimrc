@@ -185,6 +185,9 @@ set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*.venv/*
 set wildignore+=*/coverage/*
+set wildignore+=*.testrepository/*
+set wildignore+=*.git/*
+set wildignore+=*.ropeproject/*
 let g:ctrlp_working_path_mode = 2
 
 " set default ctrlp to ctrlpMixed
