@@ -183,11 +183,13 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
+set wildignore+=*.venv/*
 set wildignore+=*/coverage/*
 let g:ctrlp_working_path_mode = 2
 
 " set default ctrlp to ctrlpMixed
 map <c-p> :CtrlPMixed<CR>
+map <c-l> :CtrlPBuffer<CR>
 
 " Settings for python-mode
 " cd ~/.vim/bundle
