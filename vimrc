@@ -189,7 +189,7 @@ let g:ctrlp_working_path_mode = 2
 
 " set default ctrlp to ctrlpMixed
 map <c-p> :CtrlPMixed<CR>
-map <c-l> :CtrlPBuffer<CR>
+map <c-m> :CtrlPBuffer<CR>
 
 " Settings for python-mode
 " cd ~/.vim/bundle
