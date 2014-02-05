@@ -6,12 +6,12 @@ set encoding=utf-8
 set guifont=DejaVu\ Sans\ Mono\ 10
 
 if has("mac") || has("macunix")
-    set guifont=Monaco:h12
+    set guifont=Monaco:h13
+    " Init pathogen
+    call pathogen#infect()
+    call pathogen#helptags()
 endif
 
-" Init pathogen
-call pathogen#infect()
-call pathogen#helptags()
 
 "FileType support
 set filetype=on
@@ -46,7 +46,6 @@ if has('gui_running')
 	nnoremap p "+p
 	nnoremap P "+P
 	nnoremap yy yy"+yy
-endif
 
 " ===============
 " solarized color
@@ -239,3 +238,4 @@ let g:indent_guides_guide_size = 1
 " EasyMotion
 " ================
 map <leader>a <leader><leader>w
+endif
