@@ -23,6 +23,7 @@ autocmd FileType javascript,html,css,php set sw=2
 autocmd FileType javascript,html,css,php set ts=2
 autocmd FileType javascript,html,css,php set sts=2
 autocmd FileType javascript,css,php set textwidth=79
+autocmd FileType xml,tpl set textwidth=0
 
 if has('gui_running')
 " close The toolbar when use gVim
@@ -181,11 +182,16 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
+set wildignore+=*.venv/*
 set wildignore+=*/coverage/*
+set wildignore+=*.testrepository/*
+set wildignore+=*.git/*
+set wildignore+=*.ropeproject/*
 let g:ctrlp_working_path_mode = 2
 
 " set default ctrlp to ctrlpMixed
 map <c-p> :CtrlPMixed<CR>
+map <c-i> :CtrlPBuffer<CR>
 
 " Settings for python-mode
 " cd ~/.vim/bundle
@@ -226,13 +232,6 @@ imap <F5> <esc>:NERDTreeToggle<cr>
 map <leader>nt :NERDTreeToggle<cr>
 vmap <leader>nt <esc>:NERDTreeToggle<cr>
 imap <leader>nt <esc>:NERDTreeToggle<cr>
-
-" ===============
-" indent guide
-" ===============
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-"let g:indent_guides_enable_on_vim_startup = 1
 
 " =================
 " EasyMotion
