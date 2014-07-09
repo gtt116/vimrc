@@ -50,12 +50,12 @@ Key mapping
 ==========
 In vim view mode,
 
- * using <,> + n + t  to toggle nerdtree
- * using <,> + t + b to toggle tabbar
- * using <,> + g jump to definition of function/class/variable
- * using <,> + t to create a new tab
+ * using , + n + t  to toggle nerdtree
+ * using , + t + b to toggle tabbar
+ * using , + g jump to definition of function/class/variable
+ * using , + t to create a new tab
  * using g + t to move to next tab
  * using g + T to move to pre tab
- * using <ctrl> + H/J/K/L to move through windows
+ * using [ctrl] + H/J/K/L to move through windows
  * using q to toggle line comment
- * using <ctrl> + p openup ctrlp menu
+ * using [ctrl] + p openup ctrlp menu
