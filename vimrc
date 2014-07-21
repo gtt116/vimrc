@@ -6,12 +6,12 @@ set encoding=utf-8
 set guifont=DejaVu\ Sans\ Mono\ 10
 
 if has("mac") || has("macunix")
-    set guifont=Monaco:h13
-    " Init pathogen
-    call pathogen#infect()
-    call pathogen#helptags()
+    set guifont=Monaco:h12
 endif
 
+" Init pathogen
+call pathogen#infect()
+call pathogen#helptags()
 
 "FileType support
 set filetype=on
@@ -47,6 +47,7 @@ if has('gui_running')
 	nnoremap p "+p
 	nnoremap P "+P
 	nnoremap yy yy"+yy
+endif
 
 " ===============
 " solarized color
@@ -237,4 +238,3 @@ imap <leader>nt <esc>:NERDTreeToggle<cr>
 " EasyMotion
 " ================
 map <leader>a <leader><leader>w
-endif
