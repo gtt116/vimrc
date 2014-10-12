@@ -59,3 +59,9 @@ In vim view mode,
  * using [ctrl] + H/J/K/L to move through windows
  * using q to toggle line comment
  * using [ctrl] + p openup ctrlp menu
+
+ * using , + l to load cscope databse into CCtree.
+ * using <C-c>> to open CCTree Forword Call Tree.
+ * using <C-c>< to open CCTree Reverse Call Tree.
+ * using <C-c>[ to decrease depth of tree.
+ * using <C-c>] to increase depth of tree.

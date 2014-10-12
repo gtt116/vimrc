@@ -190,10 +190,6 @@ set wildignore+=*.git/*
 set wildignore+=*.ropeproject/*
 let g:ctrlp_working_path_mode = 2
 
-" set default ctrlp to ctrlpMixed
-map <c-p> :CtrlPMixed<CR>
-map <c-i> :CtrlPBuffer<CR>
-
 " Settings for python-mode
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
@@ -238,3 +234,21 @@ imap <leader>nt <esc>:NERDTreeToggle<cr>
 " EasyMotion
 " ================
 map <leader>a <leader><leader>w
+
+
+" ================
+" CCTree
+" ================
+let g:CCTreeKeyHilightTree = ''
+let g:CCTreeKeyTraceForwardTree = '<C-c>>'
+let g:CCTreeKeyTraceReverseTree = '<C-c><'
+let g:CCTreeKeyDepthPlus = '<C-c>]'
+let g:CCTreeKeyDepthMinus = '<C-c>['
+let g:CCTreeMinVisibleDepth = 2
+map <leader>l <esc>:CCTreeLoadDB cscope.out<cr>
+
+
+" set default ctrlp to ctrlpMixed
+" map <c-p> at last to override CCtree mapping
+map <c-p> :CtrlPMixed<CR>
+map <c-i> :CtrlPBuffer<CR>
