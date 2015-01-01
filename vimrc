@@ -252,3 +252,6 @@ map <leader>l <esc>:CCTreeLoadDB cscope.out<cr>
 " map <c-p> at last to override CCtree mapping
 map <c-p> :CtrlPMixed<CR>
 map <c-i> :CtrlPBuffer<CR>
+
+" indentLine
+let g:indentLine_fileTypeExclude = ['html', 'htm']
