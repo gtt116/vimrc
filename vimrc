@@ -23,7 +23,7 @@ autocmd FileType javascript,html,css,php set sw=2
 autocmd FileType javascript,html,css,php set ts=2
 autocmd FileType javascript,html,css,php set sts=2
 autocmd FileType javascript,css,php set textwidth=79
-autocmd FileType xml,tpl set textwidth=0
+autocmd FileType html,htm,xml,tpl set textwidth=0
 
 if has('gui_running')
 " close The toolbar when use gVim
