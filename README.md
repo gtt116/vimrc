@@ -50,6 +50,11 @@ Key mapping
 ==========
 In vim view mode,
 
+*Please using hjkl to move cursor*
+
+ * using up to enlarge window
+ * using down to shrink window
+
  * using , + n + t  to toggle nerdtree
  * using , + t + b to toggle tabbar
  * using , + g jump to definition of function/class/variable
