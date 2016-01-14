@@ -17,13 +17,13 @@ call pathogen#helptags()
 set filetype=on
 filetype plugin indent on
 
-" indention for web languages
-autocmd FileType javascript,html,css,php set ai
-autocmd FileType javascript,html,css,php set sw=2
-autocmd FileType javascript,html,css,php set ts=2
-autocmd FileType javascript,html,css,php set sts=2
-autocmd FileType javascript,css,php set textwidth=79
-autocmd FileType html,htm,xml,tpl set textwidth=0
+autocmd FileType javascript,html,css,php,yaml set ai
+autocmd FileType javascript,html,css,php,yaml set sw=2
+autocmd FileType javascript,html,css,php,yaml set ts=2
+autocmd FileType javascript,html,css,php,yaml set sts=2
+autocmd FileType javascript,css,php set textwidth=0
+autocmd FileType html,htm,xml,tpl,yaml set textwidth=0
+
 
 if has('gui_running')
 " close The toolbar when use gVim
