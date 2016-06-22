@@ -16,7 +16,10 @@ fi
 if [[ -d ~/vimrc ]];then
     ln -s ~/vimrc/vimrc ~/.vimrc
     ln -s ~/vimrc/vim ~/.vim
+    echo '#########################'
     echo 'install finished.'
+    echo 'If you want to install vim-go, Please install golang first,'
+    echo 'then running: go get -u github.com/jstemmer/gotags'
     exit 0
 else
     echo '~/vimrc does not exist'
