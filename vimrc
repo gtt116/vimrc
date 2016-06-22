@@ -193,7 +193,7 @@ let g:ctrlp_working_path_mode = 2
 " Settings for python-mode
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
-map <Leader>g :call RopeGotoDefinition()<CR>
+au FileType python map <Leader>g :call RopeGotoDefinition()<CR>
 let g:pymode_run = 0
 let g:pymode_folding=0
 let g:pymode_lint_checker="pyflakes,pep8"
@@ -255,3 +255,11 @@ map <c-i> :CtrlPBuffer<CR>
 
 " indentLine
 let g:indentLine_fileTypeExclude = ['html', 'htm']
+
+"==================
+" vim-go
+"==================
+au FileType go nmap <Leader>g <Plug>(go-def)
+au FileType go nmap <Leader>gs <Plug>(go-def-split)
+au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>gt <Plug>(go-def-tab)
