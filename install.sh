@@ -2,6 +2,18 @@
 
 sudo apt-get update
 sudo apt-get install exuberant-ctags -y
+which apt-get 2>/dev/null
+is_debian=$?
+
+if [ $is_debian == 0 ]; then
+    echo ' ******* Debian/Ubuntu detected **********'
+    sudo apt-get update
+    sudo apt-get install exuberant-ctags -y
+else
+    echo ' ******* Redhat/Centos detected **********'
+    sudo yum install ctags
+fi
+
 
 if [[ -e ~/.vimrc ]]; then
     echo 'Backup vimrc to ~/.vimrc.bak'
