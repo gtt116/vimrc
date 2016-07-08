@@ -11,7 +11,7 @@ if [ $is_debian == 0 ]; then
     sudo apt-get install exuberant-ctags -y
 else
     echo ' ******* Redhat/Centos detected **********'
-    sudo yum install ctags
+    sudo yum install -y ctags
 fi
 
 
