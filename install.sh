@@ -1,17 +1,21 @@
 #!/bin/bash
 
-which apt-get 2>/dev/null
-is_debian=$?
-
-if [ $is_debian == 0 ]; then
-    echo ' ******* Debian/Ubuntu detected **********'
-    sudo apt-get update
-    sudo apt-get install exuberant-ctags -y
+if [ `uname` == 'Darwin' ]; then
+    echo ' ******* Mac detected ******* '
+    brew install ctags
 else
-    echo ' ******* Redhat/Centos detected **********'
-    sudo yum install -y ctags
-fi
+    which apt-get 2>/dev/null
+    is_debian=$?
 
+    if [ $is_debian == 0 ]; then
+        echo ' ******* Debian/Ubuntu detected **********'
+        sudo apt-get update
+        sudo apt-get install exuberant-ctags -y
+    else
+        echo ' ******* Redhat/Centos detected **********'
+        sudo yum install -y ctags
+    fi
+fi
 
 if [[ -e ~/.vimrc ]]; then
     echo 'Backup vimrc to ~/.vimrc.bak'
