@@ -263,3 +263,8 @@ au FileType go nmap <Leader>g <Plug>(go-def)
 au FileType go nmap <Leader>gs <Plug>(go-def-split)
 au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>gt <Plug>(go-def-tab)
+
+"==============
+" vim-markdown
+"==============
+let g:vim_markdown_folding_disabled = 1
