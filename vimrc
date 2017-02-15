@@ -268,3 +268,4 @@ au FileType go nmap <Leader>gt <Plug>(go-def-tab)
 " vim-markdown
 "==============
 let g:vim_markdown_folding_disabled = 1
+au FileType markdown map <Leader>tb <esc>:Toch<cr>
