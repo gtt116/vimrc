@@ -4,6 +4,7 @@ syntax on
 let mapleader = ","
 set encoding=utf-8
 set guifont=DejaVu\ Sans\ Mono\ 10
+set pastetoggle=<F10>
 
 if has("mac") || has("macunix")
     set guifont=Monaco:h12
