@@ -4,6 +4,7 @@ syntax on
 let mapleader = ","
 set encoding=utf-8
 set guifont=DejaVu\ Sans\ Mono\ 10
+set pastetoggle=<F10>
 
 if has("mac") || has("macunix")
     set guifont=Monaco:h12
@@ -130,12 +131,10 @@ vnoremap > >gv  " better indentation
 
 " Showing line numbers and length
 set number  " show line numbers
-set tw=79   " width of document (used by gd)
+set tw=100   " width of document (used by gd)
+set colorcolumn=100
 "" set nowrap  " don't automatically wrap on load
 "" set fo-=t   " don't automatically wrap text when typing
-"set colorcolumn=80
-"highlight ColorColumn ctermbg=233
-set colorcolumn=80
 
 
 " Useful settings
@@ -197,7 +196,7 @@ au FileType python map <Leader>g :call RopeGotoDefinition()<CR>
 let g:pymode_run = 0
 let g:pymode_folding=0
 let g:pymode_lint_checker="pyflakes,pep8"
-let g:pymode_lint_ignore="N4,E12,E711,E712,E721,E502"
+let g:pymode_lint_ignore="N4,E12,E711,E712,E721,E502,E501"
  
 let g:pymode_rope_enable_shortcuts=0
 let pymode_rope_vim_completion=0
@@ -263,3 +262,9 @@ au FileType go nmap <Leader>g <Plug>(go-def)
 au FileType go nmap <Leader>gs <Plug>(go-def-split)
 au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>gt <Plug>(go-def-tab)
+
+"==============
+" vim-markdown
+"==============
+let g:vim_markdown_folding_disabled = 1
+au FileType markdown map <Leader>tb <esc>:Toch<cr>
