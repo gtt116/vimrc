@@ -22,6 +22,7 @@ A vim config to make a awesome python IDE, currently just support for Ubuntu. In
  * vim-autoclose
  * vim-nerdtree-tabs
  * vim-ragtag
+ * vim-easygrep
 
 How to install:
 
@@ -70,3 +71,23 @@ In vim view mode,
  * using <C-c>< to open CCTree Reverse Call Tree.
  * using <C-c>[ to decrease depth of tree.
  * using <C-c>] to increase depth of tree.
+
+Easygrep Keymapping
+====================
+
+```
+<Leader>vv  - Grep for the word under the cursor, match all occurences,
+              like |gstar|
+<Leader>vV  - Grep for the word under the cursor, match whole word, like
+              |star|
+<Leader>va  - Like vv, but add to existing list
+<Leader>vA  - Like vV, but add to existing list
+<Leader>vr  - Perform a global search on the word under the cursor
+              and prompt for a pattern with which to replace it.
+<Leader>vo  - Select the files to search in and set grep options
+<Leader>vy* - Invoke any option from the options explorer, where * is the
+              shortcut for that option.
+              e.g. <Leader>vyr - toggles recursion
+                   <Leader>vyb - sets buffer grepping mode
+                   etc.
+```
