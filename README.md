@@ -23,6 +23,7 @@ A vim config to make a awesome python IDE, currently just support for Ubuntu. In
  * vim-nerdtree-tabs
  * vim-ragtag
  * vim-easygrep
+ * vim-vue (https://github.com/posva/vim-vue)
 
 How to install:
 
