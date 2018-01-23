@@ -1,1 +1,1 @@
-/home/hzgaott/vimrc/vim
+/home/ubuntu/vimrc/vim
