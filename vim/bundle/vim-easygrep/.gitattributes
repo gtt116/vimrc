@@ -1,0 +1,10 @@
+# Set default behaviour, in case users don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files we want to always be normalized and converted 
+# to native line endings on checkout.
+*.vim text eol=lf
+
+# Don't change line endings for testing files
+*.ok text eol=lf
+
