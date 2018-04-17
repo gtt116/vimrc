@@ -25,6 +25,7 @@ A vim config to make a awesome python IDE, currently just support for Ubuntu. In
  * vim-easygrep
  * vim-vue (https://github.com/posva/vim-vue)
  * vim-yaml-folds (https://github.com/pedrohdz/vim-yaml-folds)
+ * vim-json (https://github.com/elzr/vim-json)
 
 How to install:
 
