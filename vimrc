@@ -53,7 +53,7 @@ endif
 " ===============
 " solarized color
 " ===============
-set background=light
+set background=dark
 set t_Co=256
 let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
@@ -267,4 +267,3 @@ au FileType go nmap <Leader>gt <Plug>(go-def-tab)
 " vim-markdown
 "==============
 let g:vim_markdown_folding_disabled = 1
-au FileType markdown map <Leader>tb <esc>:Tocv<cr>
