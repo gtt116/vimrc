@@ -160,6 +160,10 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" some shortcut for myself
+" using `less` to open current file, since less is easier to copy from.
+nmap <leader>ls <esc>:!less %<CR>
+
 " ============================================================================
 " Python IDE Setup
 " ============================================================================
