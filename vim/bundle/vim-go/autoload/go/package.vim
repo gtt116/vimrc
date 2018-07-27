@@ -9,117 +9,133 @@ let s:goos = $GOOS
 let s:goarch = $GOARCH
 
 if len(s:goos) == 0
-    if exists('g:golang_goos')
-        let s:goos = g:golang_goos
-    elseif has('win32') || has('win64')
-        let s:goos = 'windows'
-    elseif has('macunix')
-        let s:goos = 'darwin'
-    else
-        let s:goos = '*'
-    endif
+  if exists('g:golang_goos')
+    let s:goos = g:golang_goos
+  elseif has('win32') || has('win64')
+    let s:goos = 'windows'
+  elseif has('macunix')
+    let s:goos = 'darwin'
+  else
+    let s:goos = '*'
+  endif
 endif
 
 if len(s:goarch) == 0
-    if exists('g:golang_goarch')
-        let s:goarch = g:golang_goarch
-    else
-        let s:goarch = '*'
-    endif
+  if exists('g:golang_goarch')
+    let s:goarch = g:golang_goarch
+  else
+    let s:goarch = '*'
+  endif
 endif
 
-function! go#package#Paths()
-    let dirs = []
+function! go#package#Paths() abort
+  let dirs = []
 
+  if !exists("s:goroot")
     if executable('go')
-        let goroot = substitute(system('go env GOROOT'), '\n', '', 'g')
-        if v:shell_error
-            echomsg '''go env GOROOT'' failed'
-        endif
+      let s:goroot = go#util#env("goroot")
+      if go#util#ShellError() != 0
+        echomsg '''go env GOROOT'' failed'
+      endif
     else
-        let goroot = $GOROOT
+      let s:goroot = $GOROOT
     endif
+  endif
 
-    if len(goroot) != 0 && isdirectory(goroot)
-        let dirs += [goroot]
-    endif
+  if len(s:goroot) != 0 && isdirectory(s:goroot)
+    let dirs += [s:goroot]
+  endif
 
-    let pathsep = ':'
-    if s:goos == 'windows'
-        let pathsep = ';'
-    endif
-    let workspaces = split($GOPATH, pathsep)
-    if workspaces != []
-        let dirs += workspaces
-    endif
+  let workspaces = split(go#path#Default(), go#util#PathListSep())
+  if workspaces != []
+    let dirs += workspaces
+  endif
 
-    return dirs
+  return dirs
 endfunction
 
-function! go#package#ImportPath(arg)
-    let path = fnamemodify(resolve(a:arg), ':p')
-    let dirs = go#package#Paths()
+let s:import_paths = {}
+" ImportPath returns the import path in the current directory it was executed
+function! go#package#ImportPath() abort
+  let dir = expand("%:p:h")
+  if has_key(s:import_paths, dir)
+    return s:import_paths[dir]
+  endif
 
-    for dir in dirs
-        if len(dir) && match(path, dir) == 0
-            let workspace = dir
-        endif
-    endfor
+  let [l:out, l:err] = go#tool#ExecuteInDir(['go', 'list'])
+  if l:err != 0
+    return -1
+  endif
 
-    if !exists('workspace')
-        return -1
-    endif
+  let import_path = split(out, '\n')[0]
 
-    return substitute(path, workspace . '/src/', '', '')
+  " go list returns '_CURRENTDIRECTORY' if the directory is not inside GOPATH.
+  " Check it and retun an error if that is the case
+  if import_path[0] ==# '_'
+    return -1
+  endif
+
+  let s:import_paths[dir] = import_path
+
+  return import_path
 endfunction
 
-function! go#package#FromPath(arg)
-    let path = fnamemodify(resolve(a:arg), ':p')
-    let dirs = go#package#Paths()
 
-    for dir in dirs
-        if len(dir) && match(path, dir) == 0
-            let workspace = dir
-        endif
-    endfor
+function! go#package#FromPath(arg) abort
+  let path = fnamemodify(resolve(a:arg), ':p')
+  let dirs = go#package#Paths()
 
-    if !exists('workspace')
-        return -1
+  for dir in dirs
+    if len(dir) && match(path, dir) == 0
+      let workspace = dir
+      break
     endif
+  endfor
 
-    if isdirectory(path)
-        return substitute(path, workspace . 'src/', '', '')
-    else
-        return substitute(substitute(path, workspace . 'src/', '', ''),
-                         \ '/' . fnamemodify(path, ':t'), '', '')
-    endif
+  if !exists('workspace')
+    return -1
+  endif
+
+  let path = substitute(path, '/*$', '', '')
+  let workspace = substitute(workspace . '/src/', '/+', '', '')
+  if isdirectory(path)
+    return substitute(path, workspace, '', '')
+  else
+    return substitute(substitute(path, workspace, '', ''),
+          \ '/' . fnamemodify(path, ':t'), '', '')
+  endif
 endfunction
 
-function! go#package#CompleteMembers(package, member)
-    silent! let content = system('godoc ' . a:package)
-    if v:shell_error || !len(content)
-        return []
-    endif
-    let lines = filter(split(content, "\n"),"v:val !~ '^\\s\\+$'")
-    try
-        let mx1 = '^\s\+\(\S+\)\s\+=\s\+.*'
-        let mx2 = '^\%(const\|var\|type\|func\) \([A-Z][^ (]\+\).*'
-        let candidates = map(filter(copy(lines), 'v:val =~ mx1'),
-                            \ 'substitute(v:val, mx1, "\\1", "")')
-                     \ + map(filter(copy(lines), 'v:val =~ mx2'),
-                            \ 'substitute(v:val, mx2, "\\1", "")')
-        return filter(candidates, '!stridx(v:val, a:member)')
-    catch
-        return []
-    endtry
+function! go#package#CompleteMembers(package, member) abort
+  let [l:content, l:err] = go#util#Exec(['godoc', a:package])
+  if l:err || !len(content)
+    return []
+  endif
+
+  let lines = filter(split(content, "\n"),"v:val !~ '^\\s\\+$'")
+  try
+    let mx1 = '^\s\+\(\S+\)\s\+=\s\+.*'
+    let mx2 = '^\%(const\|var\|type\|func\) \([A-Z][^ (]\+\).*'
+    let candidates = map(filter(copy(lines), 'v:val =~ mx1'),
+          \ 'substitute(v:val, mx1, "\\1", "")')
+          \ + map(filter(copy(lines), 'v:val =~ mx2'),
+          \ 'substitute(v:val, mx2, "\\1", "")')
+    return filter(candidates, '!stridx(v:val, a:member)')
+  catch
+    return []
+  endtry
 endfunction
 
-function! go#package#Complete(ArgLead, CmdLine, CursorPos)
-    let words = split(a:CmdLine, '\s\+', 1)
-    if len(words) > 2 && words[0] != "GoImportAs"
-        " Complete package members
-        return go#package#CompleteMembers(words[1], words[2])
-    endif
+function! go#package#Complete(ArgLead, CmdLine, CursorPos) abort
+  let words = split(a:CmdLine, '\s\+', 1)
+
+  " do not complete package members for these commands
+  let neglect_commands = ["GoImportAs", "GoGuruScope"]
+
+  if len(words) > 2 && index(neglect_commands, words[0]) == -1
+    " Complete package members
+    return go#package#CompleteMembers(words[1], words[2])
+  endif
 
     let dirs = go#package#Paths()
 
@@ -142,6 +158,11 @@ function! go#package#Complete(ArgLead, CmdLine, CursorPos)
                 endif
                 let i = substitute(substitute(i[len(r)+1:], '[\\]', '/', 'g'),
                                   \ '\.a$', '', 'g')
+
+                " without this the result can have duplicates in form of
+                " 'encoding/json' and '/encoding/json/'
+                let i = go#util#StripPathSep(i)
+
                 let ret[i] = i
             endfor
         endfor
@@ -149,4 +170,4 @@ function! go#package#Complete(ArgLead, CmdLine, CursorPos)
     return sort(keys(ret))
 endfunction
 
-" vim:sw=4:et
+" vim: sw=2 ts=2 et
