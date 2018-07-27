@@ -1,28 +1,17 @@
-fun! pymode#virtualenv#Activate() "{{{
+" Support virtualenv
+"
+PymodePython from pymode.virtualenv import enable_virtualenv
 
-    if !exists("$VIRTUAL_ENV")
+fun! pymode#virtualenv#init() "{{{
+    if !g:pymode_virtualenv || g:pymode_virtualenv_path == ""
         return
     endif
 
-    for env in g:pymode_virtualenv_enabled
-        if env == $VIRTUAL_ENV
-            return 0
-        endif
-    endfor
+    PymodePython enable_virtualenv()
 
-    call add(g:pymode_virtualenv_enabled, $VIRTUAL_ENV)
+endfunction "}}}
 
-python << EOF
-import sys, vim, os
-
-ve_dir = os.environ['VIRTUAL_ENV']
-ve_dir in sys.path or sys.path.insert(0, ve_dir)
-activate_this = os.path.join(os.path.join(ve_dir, 'bin'), 'activate_this.py')
-
-# Fix for windows
-if not os.path.exists(activate_this):
-    activate_this = os.path.join(os.path.join(ve_dir, 'Scripts'), 'activate_this.py')
-
-execfile(activate_this, dict(__file__=activate_this))
-EOF
+fun! pymode#virtualenv#activate(path) "{{{
+    let g:pymode_virtualenv_path = a:path
+    call pymode#virtualenv#init()
 endfunction "}}}
