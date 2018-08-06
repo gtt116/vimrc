@@ -196,7 +196,7 @@ let g:ctrlp_working_path_mode = 2
 " Settings for python-mode
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
-au FileType python map <Leader>g :call RopeGotoDefinition()<CR>
+au FileType python map <Leader>g :call pymode#rope#goto_definition()<CR>
 let g:pymode_run = 0
 let g:pymode_folding=0
 let g:pymode_lint_checker="pyflakes,pep8"
