@@ -131,8 +131,6 @@ vnoremap > >gv  " better indentation
 
 " Showing line numbers and length
 set number  " show line numbers
-set tw=100   " width of document (used by gd)
-set colorcolumn=100
 "" set nowrap  " don't automatically wrap on load
 "" set fo-=t   " don't automatically wrap text when typing
 
