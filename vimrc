@@ -205,6 +205,7 @@ let g:pymode_lint_ignore="N4,E12,E711,E712,E721,E502,E501"
 let g:pymode_rope_enable_shortcuts=0
 let pymode_rope_vim_completion=0
 let pymode_rope_extended_complete=0
+let g:pymode_rope_regenerate_on_write = 0
 "let g:pymode_rope_enable_autoimport=0
 let g:pymode_rope_goto_def_newwin="new"
 let g:pymode_rope_guess_project = 1
