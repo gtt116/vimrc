@@ -8,6 +8,7 @@ set pastetoggle=<F10>
 
 if has("mac") || has("macunix")
     set guifont=Monaco:h12
+    set backspace=indent,eol,start
 endif
 
 " Init pathogen
@@ -131,8 +132,6 @@ vnoremap > >gv  " better indentation
 
 " Showing line numbers and length
 set number  " show line numbers
-set tw=100   " width of document (used by gd)
-set colorcolumn=100
 "" set nowrap  " don't automatically wrap on load
 "" set fo-=t   " don't automatically wrap text when typing
 
@@ -197,6 +196,7 @@ let g:ctrlp_working_path_mode = 2
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
 au FileType python map <Leader>g :call pymode#rope#goto_definition()<CR>
+let g:pymode = 1
 let g:pymode_run = 0
 let g:pymode_folding=0
 let g:pymode_lint_checker="pyflakes,pep8"
