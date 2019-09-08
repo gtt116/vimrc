@@ -76,7 +76,7 @@ tools developed by the Go community to provide a seamless Vim experience.
 ==============================================================================
 INSTALL                                                           *go-install*
 
-vim-go requires at least Vim 7.4.1689 or Neovim 0.2.2. On macOS, if you are
+vim-go requires at least Vim 7.4.2009 or Neovim 0.2.2. On macOS, if you are
 still using your system version of vim, you can use homebrew to keep your
 version of Vim up-to-date with the following terminal command:
 >
@@ -147,9 +147,6 @@ The following plugins are supported for use with vim-go:
   https://github.com/Shougo/neosnippet.vim or
   https://github.com/SirVer/ultisnips or
   https://github.com/joereynolds/vim-minisnip
-
-* For a better documentation viewer check out:
-  https://github.com/garyburd/go-explorer
 
 * Integration with `delve` (Neovim only):
   https://github.com/jodosha/vim-godebug
@@ -806,6 +803,11 @@ CTRL-t
 
     Toggles |'g:go_fmt_autosave'|.
 
+                                                     *:GoModFmtAutoSaveToggle*
+:GoModFmtAutoSaveToggle
+
+    Toggles |'g:go_mod_fmt_autosave'|.
+
                                                      *:GoAsmFmtAutoSaveToggle*
 :GoAsmFmtAutoSaveToggle
 
@@ -880,6 +882,13 @@ CTRL-t
           }
       }
 <
+                                                                  *:GoModFmt*
+:GoModFmt
+
+    Filter the current go.mod buffer through "go mod edit -fmt" command.  It
+    tries to preserve cursor position and avoids replacing the buffer with
+    stderr output.
+
 ==============================================================================
 MAPPINGS                                                        *go-mappings*
 
@@ -1097,6 +1106,10 @@ Calls `:GoImport` for the current package
 Generate if err != nil { return ... } automatically which infer the type of
 return values and the numbers.
 
+                                                                *(go-mod-fmt)*
+
+Calls |:GoModFmt| for the current buffer
+
 ==============================================================================
 TEXT OBJECTS                                                 *go-text-objects*
 
@@ -1287,7 +1300,15 @@ doesn't break. However it's slows (creates/deletes a file for every save) and
 it's causing problems on some Vim versions. By default it's disabled. >
 
   let g:go_fmt_experimental = 0
+
 <
+                                                     *'g:go_mod_fmt_autosave'*
+
+Use this option to auto |:GoModFmt| on save. By default it's enabled >
+
+  let g:go_mod_fmt_autosave = 1
+<
+
                                                *'g:go_doc_keywordprg_enabled'*
 
 Use this option to run `godoc` on words under the cursor with |K|; this will
@@ -1343,14 +1364,27 @@ Command to use for |:GoDoc|; only used when invoked with a package name. The
 under the cursor (i.e. without argument or from |K|). >
 
   let g:go_doc_command = ["godoc"]
-
-<                                                            *'g:go_bin_path'*
+<
+                                                             *'g:go_bin_path'*
 
 Use this option to change default path for vim-go tools when using
 |:GoInstallBinaries| and |:GoUpdateBinaries|. If not set `$GOBIN` or
 `$GOPATH/bin` is used. >
 
   let g:go_bin_path = ""
+<
+                                                *'g:go_search_bin_path_first'*
+
+This option lets |'g:go_bin_path'| (or its default value) take precedence over
+$PATH when invoking a tool command such as |:GoFmt| or |:GoImports|.
+
+Enabling this option ensures that the binaries installed via
+|:GoInstallBinaries| and |:GoUpdateBinaries| are the same ones that are
+invoked via the tool commands.
+
+By default it is enabled. >
+
+  let g:go_search_bin_path_first = 1
 <
                                                        *'g:go_snippet_engine'*
 
@@ -1497,10 +1531,10 @@ that was called. Supported values are "", "quickfix", and "locationlist".
 Specifies the type of list to use for command outputs (such as errors from
 builds, results from static analysis commands, etc...). When an expected key
 is not present in the dictionary, |'g:go_list_type'| will be used instead.
-Supported keys are "GoBuild", "GoErrCheck", "GoFmt", "GoInstall", "GoLint",
-"GoMetaLinter", "GoMetaLinterAutoSave", "GoModifyTags" (used for both
-:GoAddTags and :GoRemoveTags), "GoRename", "GoRun", and "GoTest".  Supported
-values for each command are "quickfix" and "locationlist".
+Supported keys are "GoBuild", "GoErrCheck", "GoFmt", "GoModFmt", "GoInstall",
+"GoLint", "GoMetaLinter", "GoMetaLinterAutoSave", "GoModifyTags" (used for
+both :GoAddTags and :GoRemoveTags), "GoRename", "GoRun", and "GoTest".
+Supported values for each command are "quickfix" and "locationlist".
 >
   let g:go_list_type_commands = {}
 <
@@ -1575,20 +1609,20 @@ same.
         \ '? go#util#pascalcase(expand("<cword>"))' .
         \ ': go#util#camelcase(expand("<cword>"))'
 <
-                                                     *'g:go_gocode_autobuild'*
-
-Specifies whether `gocode` should automatically build out-of-date packages
-when their source fields are modified, in order to obtain the freshest
-autocomplete results for them.  By default it is enabled.
->
-  let g:go_gocode_autobuild = 1
-<
                                               *'g:go_gocode_propose_builtins'*
 
 Specifies whether `gocode` should add built-in types, functions and constants
 to an autocompletion proposals. By default it is enabled.
 >
   let g:go_gocode_propose_builtins = 1
+<
+                                               *'g:go_gocode_propose_source'*
+
+Specifies whether `gocode` should use source files instead of binary packages
+for autocompletion proposals. When disabled, only identifiers from the current
+package and packages that have been installed will proposed.
+>
+  let g:go_gocode_propose_source = 1
 <
                                            *'g:go_gocode_unimported_packages'*
 
@@ -1882,6 +1916,13 @@ filetype.
 The `gohtmltmpl` filetype is automatically set for `*.tmpl` files; the
 `gotexttmpl` is never automatically set and needs to be set manually.
 
+==============================================================================
+                                                    *gomod* *ft-gomod-syntax*
+go.mod file syntax~
+
+The `gomod` 'filetype' provides syntax highlighting for Go's module file
+`go.mod`
+
 
 ==============================================================================
 DEBUGGER                                                            *go-debug*
@@ -1901,10 +1942,10 @@ features:
   * Toggle breakpoint.
   * Stack operation continue/next/step out.
 
-This feature requires Vim 8.0.0087 or newer with the |+job| feature. Neovim
-does _not_ work (yet).
-This requires Delve 1.0.0 or newer, and it is recommended to use Go 1.10 or
-newer, as its new caching will speed up recompiles.
+This feature requires either Vim 8.0.0087 or newer with the |+job| feature or
+Neovim. This features also requires Delve 1.0.0 or newer, and it is
+recommended to use Go 1.10 or newer, as its new caching will speed up
+recompiles.
 
                                                               *go-debug-intro*
 GETTING STARTED WITH THE DEBUGGER~
@@ -2089,6 +2130,14 @@ Defaults to `127.0.0.1:8181`:
   let g:go_debug_address = '127.0.0.1:8181'
 <
 
+                                                     *'g:go_highlight_debug'*
+
+Highlight the current line and breakpoints in the debugger.
+
+>
+  let g:go_highlight_debug = 1
+<
+
 ==============================================================================
 FAQ TROUBLESHOOTING                                     *go-troubleshooting*
 
@@ -2244,6 +2293,18 @@ By default new terminals are opened in a vertical split. To change it
 >
  let g:go_term_mode = "split"
 >
+
+How can I customize the highlighting?~
+
+All the highlight groups used by vim-go are prefixed with `go` (e.g.
+`goType`) and are defined in the files in the `syntax` directory. To change
+the highlighting for any group, add a `highlight` command for the group to
+your vimrc.  To turn off the highlighting for any group, add `highlight link
+group-name NONE` (where `group-name` is the name of the group whose highlight
+you'd like to turn off) to your vimrc.
+
+Some people may wish to highlight Go's builtins as keywords. To do so, one
+should simply add `highlight link goBuiltins Keyword` to the `vimrc` file.
 
 ==============================================================================
 DEVELOPMENT                                               *go-development*

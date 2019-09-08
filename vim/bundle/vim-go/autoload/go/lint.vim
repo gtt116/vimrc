@@ -41,7 +41,11 @@ function! go#lint#Gometa(autosave, ...) abort
     redraw
 
     " Include only messages for the active buffer for autosave.
-    let cmd += [printf('--include=^%s:.*$', fnamemodify(expand('%:p'), ":."))]
+    let include = [printf('--include=^%s:.*$', fnamemodify(expand('%:p'), ":."))]
+    if go#util#has_job()
+      let include = [printf('--include=^%s:.*$', expand('%:p:t'))]
+    endif
+    let cmd += include
   endif
 
   " Call gometalinter asynchronously.
@@ -52,7 +56,7 @@ function! go#lint#Gometa(autosave, ...) abort
 
   let cmd += goargs
 
-  if go#util#has_job() && has('lambda')
+  if go#util#has_job()
     call s:lint_job({'cmd': cmd}, a:autosave)
     return
   endif
@@ -193,113 +197,20 @@ function! go#lint#ToggleMetaLinterAutoSave() abort
 endfunction
 
 function! s:lint_job(args, autosave)
-  let state = {
-        \ 'status_dir': expand('%:p:h'),
-        \ 'started_at': reltime(),
-        \ 'messages': [],
-        \ 'exited': 0,
-        \ 'closed': 0,
-        \ 'exit_status': 0,
-        \ 'winid': win_getid(winnr()),
-        \ 'autosave': a:autosave
-      \ }
+  let l:opts = {
+        \ 'statustype': "gometalinter",
+        \ 'errorformat': '%f:%l:%c:%t%*[^:]:\ %m,%f:%l::%t%*[^:]:\ %m',
+        \ 'for': "GoMetaLinter",
+        \ }
 
-  call go#statusline#Update(state.status_dir, {
-        \ 'desc': "current status",
-        \ 'type': "gometalinter",
-        \ 'state': "analysing",
-        \})
+  if a:autosave
+    let l:opts.for = "GoMetaLinterAutoSave"
+  endif
 
   " autowrite is not enabled for jobs
   call go#cmd#autowrite()
 
-  if a:autosave
-    let state.listtype = go#list#Type("GoMetaLinterAutoSave")
-  else
-    let state.listtype = go#list#Type("GoMetaLinter")
-  endif
-
-  function! s:callback(chan, msg) dict closure
-    call add(self.messages, a:msg)
-  endfunction
-
-  function! s:exit_cb(job, exitval) dict
-    let self.exited = 1
-    let self.exit_status = a:exitval
-
-    let status = {
-          \ 'desc': 'last status',
-          \ 'type': "gometaliner",
-          \ 'state': "finished",
-          \ }
-
-    if a:exitval
-      let status.state = "failed"
-    endif
-
-    let elapsed_time = reltimestr(reltime(self.started_at))
-    " strip whitespace
-    let elapsed_time = substitute(elapsed_time, '^\s*\(.\{-}\)\s*$', '\1', '')
-    let status.state .= printf(" (%ss)", elapsed_time)
-
-    call go#statusline#Update(self.status_dir, status)
-
-    if self.closed
-      call self.show_errors()
-    endif
-  endfunction
-
-  function! s:close_cb(ch) dict
-    let self.closed = 1
-
-    if self.exited
-      call self.show_errors()
-    endif
-  endfunction
-
-  function state.show_errors()
-    let l:winid = win_getid(winnr())
-
-    " make sure the current window is the window from which gometalinter was
-    " run when the listtype is locationlist so that the location list for the
-    " correct window will be populated.
-    if self.listtype == 'locationlist'
-      call win_gotoid(self.winid)
-    endif
-
-    let l:errorformat = '%f:%l:%c:%t%*[^:]:\ %m,%f:%l::%t%*[^:]:\ %m'
-    call go#list#ParseFormat(self.listtype, l:errorformat, self.messages, 'GoMetaLinter')
-
-    let errors = go#list#Get(self.listtype)
-    call go#list#Window(self.listtype, len(errors))
-
-    " move to the window that was active before processing the errors, because
-    " the user may have moved around within the window or even moved to a
-    " different window since saving. Moving back to current window as of the
-    " start of this function avoids the perception that the quickfix window
-    " steals focus when linting takes a while.
-    if self.autosave
-      call win_gotoid(self.winid)
-    endif
-
-    if go#config#EchoCommandInfo()
-      call go#util#EchoSuccess("linting finished")
-    endif
-  endfunction
-
-  " explicitly bind the callbacks to state so that self within them always
-  " refers to state. See :help Partial for more information.
-  let start_options = {
-        \ 'callback': funcref("s:callback", [], state),
-        \ 'exit_cb': funcref("s:exit_cb", [], state),
-        \ 'close_cb': funcref("s:close_cb", [], state),
-        \ }
-
-  call job_start(a:args.cmd, start_options)
-
-  if go#config#EchoCommandInfo()
-    call go#util#EchoProgress("linting started ...")
-  endif
+  call go#job#Spawn(a:args.cmd, l:opts)
 endfunction
 
 " vim: sw=2 ts=2 et
