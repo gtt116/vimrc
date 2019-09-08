@@ -210,6 +210,7 @@ let g:pymode_rope_regenerate_on_write = 0
 let g:pymode_rope_goto_def_newwin="new"
 let g:pymode_rope_guess_project = 1
 let g:pymode_rope = 1
+let g:pymode_rope_completion = 0
 
 
 " =============
@@ -268,6 +269,7 @@ au FileType go nmap <Leader>gs <Plug>(go-def-split)
 au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>gt <Plug>(go-def-tab)
 let g:go_version_warning = 0
+let g:go_fmt_autosave = 0
 
 "==============
 " vim-markdown
